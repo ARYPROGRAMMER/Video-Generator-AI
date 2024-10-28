@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import React,{useState} from 'react'
 import { Open_Sans } from 'next/font/google'
 import EmptyState from './_components/EmptyState';
+import Link from 'next/link';
   
 const open_sans = Open_Sans({subsets: ["latin-ext"],style:"normal",weight: "700"});
 
@@ -15,7 +16,9 @@ function Dashboard() {
         <h2 className={`font-extrabold text-2xl text-primary ${open_sans.className} `} >
           Dashboard
         </h2>
-        <Button>Create New</Button>
+        <Link href={'/dashboard/create-new'}>
+        <Button>Create New +</Button>
+        </Link>
        </div>
 
        {/* Empty State */}
