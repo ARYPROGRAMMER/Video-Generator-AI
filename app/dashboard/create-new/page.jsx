@@ -10,13 +10,14 @@ import CustomLoading from './_components/Loading'
 import {v4 as uuidv4} from 'uuid'
 
 const outfit = Outfit({subsets: ["latin-ext"],weight: "600"});
-
+const FILE_URL= "https://firebasestorage.googleapis.com/v0/b/supercool-mental-health-app.appspot.com/o/video-generator-ai-files%2F1730165197334ae717fwr-voicemaker.in-speech.mp3?alt=media&token=44be220e-ca87-4e70-87f1-6ecbb137c238"
 function CreateNew() {
 
   const [formData,setFormData]= useState([])
   const [loading,setLoading]=useState(false)
   const [videoScript,setVideoScript]=useState()
   const [audioFileUrl,setAudioFileUrl]=useState()
+  const [caption,setCaption]=useState()
 
   const onHandleChange=(fieldName,fieldValue)=>{
     setFormData(
@@ -28,7 +29,8 @@ function CreateNew() {
   }
 
   const onCreateClickHandler=()=>{
-    GetVideoScript();
+    // GetVideoScript();
+    GenerateAudioCaption(FILE_URL)
   }
 
   //Script to generate video
@@ -60,6 +62,18 @@ function CreateNew() {
       }
     ).then(res=>{
       setAudioFileUrl(res.data.Result);
+    })
+    setLoading(false)
+  }
+
+  const GenerateAudioCaption= async (fileUrl)=>{
+    setLoading(true)
+    await axios.post('/api/generate-caption',
+    {
+      audioFileUrl: fileUrl
+    }
+    ).then(res=>{
+      setCaption(res?.data?.result);
     })
     setLoading(false)
   }
