@@ -1,14 +1,13 @@
 import { ElevenLabsClient } from "elevenlabs";
-import { writeFile } from "fs/promises";
 import { NextResponse } from "next/server";
-import path from "path";
-import { mkdir } from "fs/promises";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { storage } from "@/configs/FireBaseConfig";
 
 export async function POST(req) {
     try {
 
         const { text, id } = await req.json();
-        
+
         if (!text || !id) {
             return NextResponse.json(
                 { error: "Missing required fields: text and id" },
@@ -23,23 +22,28 @@ export async function POST(req) {
             apiKey: apiKey,
         });
 
-        const audioResponse = await elevenlabs.generate({
+        const audioStream = await elevenlabs.generate({
          
             voice: "Jessica" ,
             text: text,
             modelId: "eleven_multilingual_v2",
             outputFormat: "mp3",
         });
+        const chunks = [];
+        for await (const chunk of audioStream) {
+            chunks.push(chunk);
+        }
+        const audioBuffer = Buffer.concat(chunks);
 
-        const audioDir = path.join(process.cwd());
-        await mkdir(audioDir, { recursive: true });
+        const storageRef = ref(storage,'video-generator-ai-files/'+id+'.mp3');
 
-        const filePath = path.join(audioDir, `output.mp3`);
-        await writeFile(filePath, audioResponse);
+        await uploadBytes(storageRef, audioBuffer, { contentType: 'audio/mp3' });
 
+        const downloadUrl = await getDownloadURL(storageRef);
+      
         return NextResponse.json(
             { 
-                Result: 'Success'
+                Result: downloadUrl
             },
             { status: 200 }
         );

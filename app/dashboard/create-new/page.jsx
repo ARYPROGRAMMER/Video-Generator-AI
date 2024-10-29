@@ -16,9 +16,9 @@ function CreateNew() {
   const [formData,setFormData]= useState([])
   const [loading,setLoading]=useState(false)
   const [videoScript,setVideoScript]=useState()
+  const [audioFileUrl,setAudioFileUrl]=useState()
 
   const onHandleChange=(fieldName,fieldValue)=>{
-    console.log(fieldName,fieldValue)
     setFormData(
       prev=>({
         ...prev,
@@ -59,7 +59,7 @@ function CreateNew() {
         id: id
       }
     ).then(res=>{
-      console.log(res)
+      setAudioFileUrl(res.data.Result);
     })
     setLoading(false)
   }

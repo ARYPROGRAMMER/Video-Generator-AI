@@ -24,6 +24,7 @@
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.35.3",
     "elevenlabs": "^0.17.1",
+    "firebase": "^11.0.1",
     "lucide-react": "^0.454.0",
     "next": "15.0.1",
     "openai": "^4.68.4",
