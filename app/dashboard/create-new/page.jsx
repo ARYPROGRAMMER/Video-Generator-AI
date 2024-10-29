@@ -9,6 +9,10 @@ import axios from 'axios'
 import CustomLoading from './_components/Loading'
 import {v4 as uuidv4} from 'uuid'
 import { VideoDataContext } from '@/app/_context/VideoDataContext'
+import { VideoData } from '@/configs/schema'
+import { useUser } from '@clerk/nextjs';
+import { db } from '@/configs/db'
+import PlayerDialog from '../_components/PlayerDialog'
 
 const outfit = Outfit({subsets: ["latin-ext"],weight: "600"});
 
@@ -21,6 +25,9 @@ function CreateNew() {
   const [caption,setCaption]=useState();
   const [imageList,setImageList]=useState();
   const {videoData,setVideoData} = useContext(VideoDataContext);
+  const {user}=useUser();
+  const [playVideo,setPlayVideo]=useState(true);
+  const [videoid,setVideoid]=useState(1);
 
   const onHandleChange=(fieldName,fieldValue)=>{
     setFormData(
@@ -115,9 +122,25 @@ function CreateNew() {
   }
 
   useEffect(()=>{
-    console.log(videoData);
+    if (Object.keys(videoData).length==4){
+      SaveVideoData(videoData);
+    }
   },[videoData])
 
+  const SaveVideoData = async (videoData)=>{
+    setLoading(true);
+    const result = await db.insert(VideoData).values({
+      script: videoData?.videoScript,
+      audioFileUrl: videoData?.audioFileUrl,
+      captions: videoData?.captions,
+      imageList: videoData?.imageList,
+      createdBy: user?.primaryEmailAddress?.emailAddress
+    }).returning({id:VideoData?.id})
+
+    setVideoid(result[0].id);
+    setPlayVideo(true);
+    setLoading(false);
+  }
 
   return (
     <div className='md:px-20'>
@@ -141,6 +164,7 @@ function CreateNew() {
       </div>
 
       <CustomLoading loading={loading}/>
+      <PlayerDialog playVideo={playVideo} videoid={videoid}/>
     </div>
   )
 }
