@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import SelectTopic from './_components/SelectTopic'
 import SelectStyle from './_components/SelectStyle'
 import {Outfit} from 'next/font/google'
@@ -8,16 +8,19 @@ import { Button } from '@/components/ui/button'
 import axios from 'axios'
 import CustomLoading from './_components/Loading'
 import {v4 as uuidv4} from 'uuid'
+import { VideoDataContext } from '@/app/_context/VideoDataContext'
 
 const outfit = Outfit({subsets: ["latin-ext"],weight: "600"});
-const FILE_URL= "https://firebasestorage.googleapis.com/v0/b/supercool-mental-health-app.appspot.com/o/video-generator-ai-files%2F1730165197334ae717fwr-voicemaker.in-speech.mp3?alt=media&token=44be220e-ca87-4e70-87f1-6ecbb137c238"
+
 function CreateNew() {
 
-  const [formData,setFormData]= useState([])
-  const [loading,setLoading]=useState(false)
-  const [videoScript,setVideoScript]=useState()
-  const [audioFileUrl,setAudioFileUrl]=useState()
-  const [caption,setCaption]=useState()
+  const [formData,setFormData]= useState([]);
+  const [loading,setLoading]=useState(false);
+  const [videoScript,setVideoScript]=useState();
+  const [audioFileUrl,setAudioFileUrl]=useState();
+  const [caption,setCaption]=useState();
+  const [imageList,setImageList]=useState();
+  const {videoData,setVideoData} = useContext(VideoDataContext);
 
   const onHandleChange=(fieldName,fieldValue)=>{
     setFormData(
@@ -29,54 +32,92 @@ function CreateNew() {
   }
 
   const onCreateClickHandler=()=>{
-    // GetVideoScript();
-    GenerateAudioCaption(FILE_URL)
+    GetVideoScript();
   }
 
-  //Script to generate video
   const GetVideoScript = async ()=>{
     setLoading(true)
     const fixedPrompt = 
     "Write a Script that generates "+formData.duration+" video on the topic "+formData.topic+" along with AI Image prompt in "+formData.imageStyle+" Style for each scene and give me the result in JSON format with imagePrompt and contentText as field and without the word json or anything else, just the response. No Plain text";
     const result = await axios.post('/api/get-video-script',
+       {prompt: fixedPrompt}
+      );
       
-      {prompt: fixedPrompt}
-      ).then((response) => {
-        setVideoScript(response.data)
-        GetAudioFile(response.data);
-      })
-      setLoading(false)
+      if (result.data){
+        setVideoData(prev=>({
+            ...prev,
+          videoScript: result.data
+          }))
+
+        setVideoScript(result.data)
+        await GetAudioFile(result.data);
+      }
+        
   }
 
   const GetAudioFile = async (videoScriptData)=>{
-    setLoading(true)
     let script = '';
     const id = uuidv4();
     videoScriptData.forEach(item=>{
       script=script+item.contentText+' ';
     })
-    await axios.post('/api/generate-audio-file',
+    const responseaudio = await axios.post('/api/generate-audio-file',
       {
         text: script,
         id: id
-      }
-    ).then(res=>{
-      setAudioFileUrl(res.data.Result);
-    })
-    setLoading(false)
+      });
+
+      setVideoData(prev=>({
+          ...prev,
+          'audioFileUrl': responseaudio.data.Result
+        }))
+        setAudioFileUrl(responseaudio.data.Result);
+        responseaudio.data.Result&& await GenerateAudioCaption(responseaudio.data.Result,videoScriptData);
   }
 
-  const GenerateAudioCaption= async (fileUrl)=>{
-    setLoading(true)
-    await axios.post('/api/generate-caption',
+  const GenerateAudioCaption= async (fileUrl,videoScriptData)=>{
+    const res = await axios.post('/api/generate-caption',
     {
       audioFileUrl: fileUrl
     }
-    ).then(res=>{
+    );
+
+    setVideoData(prev=>({
+        ...prev,
+        'captions': res.data.result
+      }))
       setCaption(res?.data?.result);
-    })
-    setLoading(false)
+      res.data.result&& await GenerateImage(videoScriptData);
+
   }
+
+  const GenerateImage = async(videoScriptData)=>{
+    let images=[];
+    for (const element of videoScriptData){
+     try{
+      const res = await axios.post('/api/generate-image',
+        {
+          prompt: element.imagePrompt
+        });
+        images.push(res.data.result);
+     }
+     catch(e){
+       console.log('ERROR'+e);
+     }
+    }
+
+    setVideoData(prev=>({
+        ...prev,
+        'imageList': images
+      }))
+    setImageList(images);
+    setLoading(false);
+  }
+
+  useEffect(()=>{
+    console.log(videoData);
+  },[videoData])
+
 
   return (
     <div className='md:px-20'>
