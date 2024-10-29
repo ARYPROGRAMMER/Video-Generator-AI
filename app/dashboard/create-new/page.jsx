@@ -7,6 +7,7 @@ import SelectDuration from './_components/SelectDuration'
 import { Button } from '@/components/ui/button'
 import axios from 'axios'
 import CustomLoading from './_components/Loading'
+import {v4 as uuidv4} from 'uuid'
 
 const outfit = Outfit({subsets: ["latin-ext"],weight: "600"});
 
@@ -39,10 +40,28 @@ function CreateNew() {
       
       {prompt: fixedPrompt}
       ).then((response) => {
-        console.log(response.data)
         setVideoScript(response.data)
+        GetAudioFile(response.data);
       })
       setLoading(false)
+  }
+
+  const GetAudioFile = async (videoScriptData)=>{
+    setLoading(true)
+    let script = '';
+    const id = uuidv4();
+    videoScriptData.forEach(item=>{
+      script=script+item.contentText+' ';
+    })
+    await axios.post('/api/generate-audio-file',
+      {
+        text: script,
+        id: id
+      }
+    ).then(res=>{
+      console.log(res)
+    })
+    setLoading(false)
   }
 
   return (
