@@ -9,10 +9,13 @@ import axios from 'axios'
 import CustomLoading from './_components/Loading'
 import {v4 as uuidv4} from 'uuid'
 import { VideoDataContext } from '@/app/_context/VideoDataContext'
-import { VideoData } from '@/configs/schema'
+import { Users, VideoData } from '@/configs/schema'
 import { useUser } from '@clerk/nextjs';
 import { db } from '@/configs/db'
 import PlayerDialog from '../_components/PlayerDialog'
+import { UserDetailContext } from '@/app/_context/UserDetailContext'
+import { toast } from 'sonner'
+import { eq } from 'drizzle-orm'
 
 const outfit = Outfit({subsets: ["latin-ext"],weight: "600"});
 
@@ -26,8 +29,11 @@ function CreateNew() {
   const [imageList,setImageList]=useState();
   const {videoData,setVideoData} = useContext(VideoDataContext);
   const {user}=useUser();
-  const [playVideo,setPlayVideo]=useState(true);
-  const [videoid,setVideoid]=useState(1);
+  const [playVideo,setPlayVideo]=useState();
+  const [videoid,setVideoid]=useState();
+  const {userDetail,setUserDetail}=useContext(UserDetailContext);
+
+
 
   const onHandleChange=(fieldName,fieldValue)=>{
     setFormData(
@@ -39,6 +45,12 @@ function CreateNew() {
   }
 
   const onCreateClickHandler=()=>{
+    if (userDetail?.credits<=0)
+    {
+      console.log(userDetail?.credits);
+      toast('You do not have enough credits to create a video. Please buy more credits to continue.');
+      return;
+    }
     GetVideoScript();
   }
 
@@ -137,11 +149,24 @@ function CreateNew() {
       createdBy: user?.primaryEmailAddress?.emailAddress
     }).returning({id:VideoData?.id})
 
+    await UpdateUserCredits();
     setVideoid(result[0].id);
     setPlayVideo(true);
     setLoading(false);
   }
 
+  const UpdateUserCredits=async()=>{
+    const result =await db.update(Users).set({
+      credits: userDetail?.credits-10
+    }).where(eq(Users?.email,user?.primaryEmailAddress?.emailAddress))
+
+    setUserDetail(prev=>({
+      ...prev,
+      "credits": userDetail?.credits-10
+    }))
+    setVideoData(null);
+  }
+  
   return (
     <div className='md:px-20'>
       <h2 className={`text-4xl text-primary text-center ${outfit.className}`}>Create A New Video</h2>

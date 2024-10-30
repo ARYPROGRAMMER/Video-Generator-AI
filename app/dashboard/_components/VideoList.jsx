@@ -8,9 +8,9 @@ function VideoList({videoList}) {
     const [videoid,setVideoid]=useState();
 
   return (
-    <div className='mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10'>
+    <div className='mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
         {videoList?.map((video,index)=>(
-                <div className='cursor-pointer hover:scale-105 transition-all'
+                <div key={video?.id || index} className='cursor-pointer hover:scale-105 transition-all shadow-sm'
                 onClick={()=>{setOpenPlayDialog(Date.now());setVideoid(video?.id)}}>
                      <Thumbnail
                         component={RemotionVideo}
@@ -21,9 +21,9 @@ function VideoList({videoList}) {
                         fps={30}
                         style={{
                             borderRadius: 20,
-                            boxShadow: '0 0 10px rgba(0,0,0,0.1)',
+         
                             overflow: 'hidden',
-                        
+                            
                             imageRendering: 'pixelated',
 
                         }}

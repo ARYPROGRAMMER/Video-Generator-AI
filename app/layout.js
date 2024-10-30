@@ -1,4 +1,5 @@
 
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 import Provider from "./provider";
@@ -21,7 +22,7 @@ export default function RootLayout({ children }) {
         <Provider>
           {children}
         </Provider>
-   
+   <Toaster />
       </body>
     </html>
     </ClerkProvider>
