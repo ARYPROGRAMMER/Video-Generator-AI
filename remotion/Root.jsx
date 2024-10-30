@@ -11,7 +11,7 @@ function RemotionRoot() {
       durationInFrames={60}
       fps={30}
       width={1280}
-      height={720}
+      height={1080}
     />
   </div>
   )
