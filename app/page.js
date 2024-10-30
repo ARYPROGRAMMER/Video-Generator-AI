@@ -271,7 +271,7 @@ export default function Home() {
               <span>GitHub</span>
               </a>
 
-              <a href="https://github.com/ARYPROGRAMMER/Video-Generator-AI/blob/master/LICENSE" className="hover:text-white transition-colors">License MIT</a>
+              <a href="https://github.com/ARYPROGRAMMER/Video-Generator-AI/blob/master/LICENSE" className="hover:text-white transition-colors">License GNU GPL</a>
               <a href="https://devpost.com/software/video-generation-ai" className="hover:text-white transition-colors">Devpost</a>
               <a href="https://www.linkedin.com/in/its-arya/" className="hover:text-white transition-colors">LinkedIn</a>
             </div>
