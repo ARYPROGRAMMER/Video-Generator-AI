@@ -14,15 +14,13 @@
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
   [![ElevenLabs](https://img.shields.io/badge/Eleven_Labs-API-red?style=flat-square)](https://elevenlabs.io/)
   [![AssemblyAI](https://img.shields.io/badge/Assembly_AI-Latest-orange?style=flat-square)](https://www.assemblyai.com/)
-  [![Gemini](https://img.shields.io/badge/Gemini-15_Flash-blue?style=flat-square)](https://gemini.com/)
-  [![License](https://img.shields.io/github/license/ARYPROGRAMMER/Video-Generator-AI?style=flat-square)](LICENSE)
+  [![Gemini](https://img.shields.io/badge/Gemini-1.5_Flash-blue?style=flat-square)](https://gemini.com/)
+  [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
   [![Issues](https://img.shields.io/github/issues/ARYPROGRAMMER/Video-Generator-AI?style=flat-square)](https://github.com/ARYPROGRAMMER/Video-Generator-AI/issues)
   [![Pull Requests](https://img.shields.io/github/issues-pr/ARYPROGRAMMER/Video-Generator-AI?style=flat-square)](https://github.com/ARYPROGRAMMER/Video-Generator-AI/pulls)
   [![Contributors](https://img.shields.io/github/contributors/ARYPROGRAMMER/Video-Generator-AI?style=flat-square)](https://github.com/ARYPROGRAMMER/Video-Generator-AI/graphs/contributors)
 
-  [Demo](https://your-demo-link.com) · [Report Bug](https://github.com/ARYPROGRAMMER/Video-Generator-AI/issues) · [Request Feature](https://github.com/ARYPROGRAMMER/Video-Generator-AI/issues)
-
-  ![Demo](public/demo.gif)
+  [Demo Video](https://your-demo-link.com) · [Report Bug](https://github.com/ARYPROGRAMMER/Video-Generator-AI/issues) · [Request Feature](https://github.com/ARYPROGRAMMER/Video-Generator-AI/issues)
 
 </div>
 
@@ -82,7 +80,7 @@ HUGGINGFACE_API_KEY=<your-huggingface-api-key>
 NEXT_PUBLIC_OPENAI_API_KEY=<your-openai-api-key>
 ```
 
-> ⚠️ **Warning**: The app may not function correctly if the developer’s API keys are expired or invalid. Please ensure your own valid API keys are added to avoid disruptions.
+> ⚠️ **Warning**: The app may not function correctly if the my API keys are expired or invalid. Please ensure your own valid API keys are added to avoid disruptions.
 
 ### 4. Run the App
 
@@ -90,7 +88,7 @@ NEXT_PUBLIC_OPENAI_API_KEY=<your-openai-api-key>
 npm run dev
 ```
 
-The app will be running at [localhost:3000](http://localhost:3000).
+The app will be running at [localhost:3000](http://localhost:3000)
 
 ---
 
@@ -101,10 +99,4 @@ We welcome contributions! Please fork the repository, make your changes, and sub
 ## License
 
 Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
-
-<div align="center">
-  <a href="https://discord.gg/.aryasingh">
-    <img src="https://img.shields.io/discord/YOUR_DISCORD_ID?style=flat-square&logo=discord" alt="Discord">
-  </a>
-</div>
 
