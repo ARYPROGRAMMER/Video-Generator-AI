@@ -15,7 +15,7 @@
   [![ElevenLabs](https://img.shields.io/badge/Eleven_Labs-API-red?style=flat-square)](https://elevenlabs.io/)
   [![AssemblyAI](https://img.shields.io/badge/Assembly_AI-Latest-orange?style=flat-square)](https://www.assemblyai.com/)
   [![Gemini](https://img.shields.io/badge/Gemini-1.5_Flash-blue?style=flat-square)](https://gemini.com/)
-  [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+  [![License](https://img.shields.io/badge/License-GNU%20GPL-blue)](LICENSE)
   [![Issues](https://img.shields.io/github/issues/ARYPROGRAMMER/Video-Generator-AI?style=flat-square)](https://github.com/ARYPROGRAMMER/Video-Generator-AI/issues)
   [![Pull Requests](https://img.shields.io/github/issues-pr/ARYPROGRAMMER/Video-Generator-AI?style=flat-square)](https://github.com/ARYPROGRAMMER/Video-Generator-AI/pulls)
   [![Contributors](https://img.shields.io/github/contributors/ARYPROGRAMMER/Video-Generator-AI?style=flat-square)](https://github.com/ARYPROGRAMMER/Video-Generator-AI/graphs/contributors)
