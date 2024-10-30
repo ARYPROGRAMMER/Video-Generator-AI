@@ -20,7 +20,7 @@
   [![Pull Requests](https://img.shields.io/github/issues-pr/ARYPROGRAMMER/Video-Generator-AI?style=flat-square)](https://github.com/ARYPROGRAMMER/Video-Generator-AI/pulls)
   [![Contributors](https://img.shields.io/github/contributors/ARYPROGRAMMER/Video-Generator-AI?style=flat-square)](https://github.com/ARYPROGRAMMER/Video-Generator-AI/graphs/contributors)
 
-  [Demo Video](https://your-demo-link.com) · [Report Bug](https://github.com/ARYPROGRAMMER/Video-Generator-AI/issues) · [Request Feature](https://github.com/ARYPROGRAMMER/Video-Generator-AI/issues)
+  [Demo Videos Generated](https://vimeo.com/1024767660) · [Report Bug](https://github.com/ARYPROGRAMMER/Video-Generator-AI/issues) · [Request Feature](https://github.com/ARYPROGRAMMER/Video-Generator-AI/issues)
 
 </div>
 
@@ -44,7 +44,7 @@ A modern **Next.js 15** application that transforms text queries into high-quali
 - **Database** - Robust data handling with Drizzle ORM
 - **AI Integration** - GPT-4 and Gemini 15 Flash
 
-[Link To DevPost Submission](www.google.com)
+[Link To DevPost Submission](https://devpost.com/software/video-generation-ai)
 
 ---
 

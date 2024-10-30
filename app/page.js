@@ -12,7 +12,7 @@ export default function Home() {
   const router = useRouter();
   const { isSignedIn, isLoaded } = useAuth();
   const [isPlaying, setIsPlaying] = useState(false);
-  const videoUrl = "https://vimeo.com/1013864504";
+  const videoUrl = "https://vimeo.com/1024767660";
 
   // Extract Vimeo video ID from the URL and generate embeddable URL
   const getVimeoEmbedUrl = (url) => {
@@ -70,7 +70,7 @@ export default function Home() {
                   <GitHubLogoIcon className="h-7 w-7" />
                   <span>Limited Time Open Source</span>
               </a>          
-                <a href="https://github.com/ARYPROGRAMMER/Video-Generator-AI" className="flex items-center space-x-2 hover:text-white transition-colors">
+                <a href="https://devpost.com/software/video-generation-ai" className="flex items-center space-x-2 hover:text-white transition-colors">
                 <Image src="/devpost.svg" alt="DevPost" width={90} height={70} />
                   <span>Submission on DevPost</span>
                 
@@ -272,7 +272,7 @@ export default function Home() {
               </a>
 
               <a href="https://github.com/ARYPROGRAMMER/Video-Generator-AI/blob/master/LICENSE" className="hover:text-white transition-colors">License MIT</a>
-              <a href="#" className="hover:text-white transition-colors">Devpost</a>
+              <a href="https://devpost.com/software/video-generation-ai" className="hover:text-white transition-colors">Devpost</a>
               <a href="https://www.linkedin.com/in/its-arya/" className="hover:text-white transition-colors">LinkedIn</a>
             </div>
           </div>
