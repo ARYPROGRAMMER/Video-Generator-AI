@@ -30,9 +30,9 @@
 
 A modern **Next.js 15** application that transforms text queries into high-quality videos using cutting-edge AI technologies. Perfect for marketers, educators, and content creators looking to streamline their video content production.
 
-<div align="center">
+
   [![Vercel Deployment](https://vercel.com/button)](https://video-generator-h9fmg5fxf-aryprogrammers-projects.vercel.app/)
-</div>
+
 
 ### ✨ Key Features
 
