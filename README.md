@@ -120,5 +120,5 @@ We welcome contributions! Please fork the repository, make your changes, and sub
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
+Distributed under the GNU GPL License. See [LICENSE](LICENSE) for more information.
 
