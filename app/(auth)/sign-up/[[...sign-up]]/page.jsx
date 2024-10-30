@@ -5,6 +5,7 @@ import { Wand2, Zap, Film, Share2, ArrowLeft, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 const SignUpPage = () => {
   const router = useRouter();
@@ -15,38 +16,30 @@ const SignUpPage = () => {
       icon: Zap,
       title: "Lightning Fast Generation",
       description: "Create professional videos in under 5 minutes",
-      image: "/api/placeholder/800/400",
       delay: 0.2
     },
     {
       icon: Film,
       title: "4K Quality Output",
       description: "High-resolution videos ready for any platform",
-      image: "/api/placeholder/800/400",
+
       delay: 0.3
     },
     {
       icon: Share2,
       title: "Easy Sharing",
       description: "Direct export to social media platforms",
-      image: "/api/placeholder/800/400",
       delay: 0.4
     }
   ];
 
   const testimonials = [
     {
-      image: "/api/placeholder/150/150",
-      name: "Sarah Chen",
-      role: "Content Creator",
-      quote: "Video Generator AI has revolutionized my content creation process!"
+      image:"https://avatars.githubusercontent.com/u/75311742?v=4",
+      name: "Arya Pratap Singh",
+      role: "Software Engineer",
+      quote: "Video Generator AI has taken a lot of Efforts out of my work. I can now focus on other important tasks while the AI does the video creation for me."
     },
-    {
-      image: "/api/placeholder/150/150",
-      name: "Alex Rivera",
-      role: "Marketing Director",
-      quote: "What used to take hours now takes minutes. Simply amazing!"
-    }
   ];
 
 
@@ -70,6 +63,15 @@ const SignUpPage = () => {
         transition={{ duration: 0.6 }}
         className="md:w-5/12 p-6 md:p-12 flex flex-col justify-center relative overflow-hidden"
       >
+          <Image
+          src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80"
+          alt="Login Background"
+          layout="fill"
+          objectFit="cover"
+          className="select-none object-cover"
+          priority
+        />
+
         <motion.div 
           className="absolute inset-0 bg-black/30 backdrop-blur-sm z-0"
           initial={{ opacity: 0 }}
@@ -79,11 +81,11 @@ const SignUpPage = () => {
 
         {/* Animated background elements */}
         <motion.div 
-          className="absolute top-0 right-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl"
+          className="absolute top-0 right-0 w-64 h-64 bg-purple-500/20 rounded-full blur-2xl"
           {...floatingAnimation}
         />
         <motion.div 
-          className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl"
+          className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/20 rounded-full blur-2xl"
           animate={{
             y: [0, 10, 0],
             transition: { duration: 7, repeat: Infinity, ease: "easeInOut" }
@@ -181,7 +183,7 @@ const SignUpPage = () => {
           >
             <div className="flex items-center space-x-4">
               <div className="flex -space-x-4">
-                {[1, 2, 3].map((_, index) => (
+                {[1, 2, 3,4,5,6].map((_, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
@@ -193,6 +195,8 @@ const SignUpPage = () => {
                       className="w-12 h-12 rounded-full border-2 border-purple-500 bg-gradient-to-br from-purple-400 to-pink-400"
                     />
                   </motion.div>
+
+
                 ))}
               </div>
               <motion.p 
@@ -201,7 +205,7 @@ const SignUpPage = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1 }}
               >
-                Trusted by 10,000+ content creators
+                Trusted by XY+ content creators
               </motion.p>
             </div>
           </motion.div>
@@ -219,7 +223,7 @@ const SignUpPage = () => {
           <div className="w-full max-w-xl">
             {/* Main Sign Up Card */}
             <motion.div 
-              className="bg-white p-8 md:p-12 rounded-2xl shadow-xl relative overflow-hidden"
+              className="bg-gray-50 p-8 md:p-12 rounded-2xl shadow-xl relative overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -244,7 +248,7 @@ const SignUpPage = () => {
               </motion.div>
 
               <motion.div 
-                className="py-6"
+                className="py-6 px-12"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
@@ -256,29 +260,37 @@ const SignUpPage = () => {
             {/* Testimonials Carousel */}
             <motion.div 
               className="mt-12"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
             >
               {testimonials.map((testimonial, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-gray-50 p-6 rounded-xl mb-4"
-                  whileHover={{ scale: 1.02 }}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.8 + index * 0.1 }}
-                >
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-400" />
-                    <div>
-                      <p className="font-medium text-gray-900">{testimonial.name}</p>
-                      <p className="text-sm text-gray-600">{testimonial.role}</p>
-                    </div>
-                  </div>
-                  <p className="mt-4 text-gray-700 italic">{testimonial.quote}</p>
-                </motion.div>
-              ))}
+  <motion.div
+    key={index}
+    className="bg-gray-50 p-6 rounded-xl mb-4"
+    whileHover={{ scale: 1.02 }}
+    initial={{ opacity: 0, x: 20 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ delay: 0.8 + index * 0.1 }}
+  >
+    <div className="flex items-center space-x-4">
+      <div className="w-12 h-12">
+        <Image
+          src={testimonial.image}
+          alt={testimonial.name}
+          width={48}
+          height={48}
+          className="rounded-full"
+        />
+      </div>
+      <div>
+        <p className="font-medium text-gray-900">{testimonial.name}</p>
+        <p className="text-sm text-gray-600">{testimonial.role}</p>
+      </div>
+    </div>
+    <p className="mt-4 text-gray-700 italic">{testimonial.quote}</p>
+  </motion.div>
+))}
             </motion.div>
 
             {/* Trust Indicators */}

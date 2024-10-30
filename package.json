@@ -39,6 +39,7 @@
     "react-dom": "19.0.0-rc-69d4b800-20241021",
     "remotion": "4.0.223",
     "shadcn-cli": "^0.0.6",
+    "simple-icons": "^13.15.0",
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",

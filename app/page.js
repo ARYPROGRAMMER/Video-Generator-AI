@@ -1,14 +1,29 @@
 "use client"
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { UserButton, useAuth } from "@clerk/nextjs";
+import { useAuth } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { Wand2, Play, Sparkles, Zap, Share2, Layers, ArrowRight } from 'lucide-react';
+import { GitHubLogoIcon } from '@radix-ui/react-icons';
+import Image from 'next/image';
 
 export default function Home() {
   const router = useRouter();
   const { isSignedIn, isLoaded } = useAuth();
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoUrl = "https://vimeo.com/1013864504";
+
+  // Extract Vimeo video ID from the URL and generate embeddable URL
+  const getVimeoEmbedUrl = (url) => {
+    const videoId = url.split("vimeo.com/")[1];
+    return `https://player.vimeo.com/video/${videoId}`;
+  };
+
+  const embedUrl = getVimeoEmbedUrl(videoUrl);
+  const handlePlayClick = () => {
+    setIsPlaying(true);
+  };
 
   useEffect(() => {
     if (isLoaded && isSignedIn) {
@@ -37,7 +52,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white">
-      {/* Navigation */}
+
       <motion.nav 
         className="fixed top-0 left-0 right-0 z-50 bg-gray-900/50 backdrop-blur-lg border-b border-white/10"
         initial={{ opacity: 0, y: -50 }}
@@ -51,19 +66,22 @@ export default function Home() {
               <span className="text-2xl font-bold">Video Generator AI</span>
             </div>
             <div className="flex items-center space-x-6">
-              <Button onClick={() => router.push('/pricing')} variant="ghost">
-                Pricing
-              </Button>
-              <Button onClick={() => router.push('/examples')} variant="ghost">
-                Examples
-              </Button>
-              <UserButton afterSignOutUrl="/" />
+            <a href="https://github.com/ARYPROGRAMMER/Video-Generator-AI" className="flex items-center space-x-2 hover:text-white transition-colors">
+                  <GitHubLogoIcon className="h-7 w-7" />
+                  <span>Limited Time Open Source</span>
+              </a>          
+                <a href="https://github.com/ARYPROGRAMMER/Video-Generator-AI" className="flex items-center space-x-2 hover:text-white transition-colors">
+                <Image src="/devpost.svg" alt="DevPost" width={90} height={70} />
+                  <span>Submission on DevPost</span>
+                
+              </a>
+             
             </div>
           </div>
         </div>
       </motion.nav>
 
-      {/* Hero Section */}
+
       <main className="pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-800 via-indigo-900 to-gray-900 opacity-20 pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -96,50 +114,70 @@ export default function Home() {
                 <ArrowRight className="h-5 w-5" />
               </Button>
               <Button 
-                onClick={() => router.push('/demo')}
+                onClick={() => {
+                  window.open("https://www.youtube.com/watch?v=8-E1LbChJ88", "_blank");
+                }}
                 variant="outline"
                 className="border-purple-400 text-purple-400 hover:bg-purple-400/10 px-8 py-6 rounded-xl text-lg flex items-center space-x-2 w-full sm:w-auto transition-all transform hover:scale-105"
               >
                 <Play className="h-5 w-5" />
-                <span>Watch Demo</span>
+                <span>Watch Development Insights</span>
               </Button>
             </div>
           </motion.div>
 
-          {/* Video Preview */}
-          <motion.div 
-            className="relative max-w-4xl mx-auto mb-32 rounded-2xl overflow-hidden shadow-xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-          >
-            <div className="aspect-video bg-gray-800 rounded-2xl overflow-hidden">
-              <img 
-                src="https://source.unsplash.com/random/1200x675/?ai,video"
-                alt="AI Video Generation"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent" />
-            </div>
+
+
+          <motion.div
+      className="relative max-w-4xl mx-auto mb-32 rounded-2xl overflow-hidden shadow-xl"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      <div className="aspect-video bg-gray-800 rounded-2xl overflow-hidden relative">
+        {isPlaying ? (
+          // Embed Vimeo iframe to play the video
+          <iframe
+            className="w-full h-full"
+            src={embedUrl}
+            title="Vimeo video player"
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        ) : (
+          <>
+            {/* Display image before playing the video */}
+            <Image src="/cyberpunk.png" width={1800} height={1800}  alt="AI Video Generation" className='object-cover h-full w-full' />
             <div className="absolute bottom-0 left-0 right-0 p-8">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center">
+                  <div
+                    className="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center cursor-pointer"
+                    onClick={handlePlayClick}
+                  >
                     <Play className="h-6 w-6" />
                   </div>
                   <div>
-                    <p className="text-lg font-semibold">See it in action</p>
-                    <p className="text-purple-200">Watch how easy it is to create videos</p>
+                    <p className="text-lg font-semibold">See Example Videos Generated</p>
+                    <p className="text-purple-200">Watch the videos generated during development</p>
                   </div>
                 </div>
-                <Button variant="outline" className="border-white/20 hover:bg-white/10">
+                <Button
+                  variant="outline"
+                  className="text-black border-white/20 hover:bg-white/10"
+                  onClick={() => setIsPlaying(!isPlaying)}
+                >
                   Learn More
                 </Button>
               </div>
             </div>
-          </motion.div>
+          </>
+        )}
+      </div>
+    </motion.div>
 
-          {/* Features Grid */}
+
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32"
             initial="hidden"
@@ -180,7 +218,6 @@ export default function Home() {
             ))}
           </motion.div>
 
-          {/* Stats Section */}
           <motion.div 
             className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-32"
             initial={{ opacity: 0 }}
@@ -188,9 +225,9 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             {[
-              { number: "10K+", label: "Active Users" },
-              { number: "100K+", label: "Videos Created" },
-              { number: "4.9/5", label: "User Rating" },
+              { number: "UV K+", label: "Active Users" },
+              { number: "WZ K+", label: "Videos Created" },
+              { number: "MN/5", label: "User Rating" },
               { number: "24/7", label: "AI Support" }
             ].map((stat, index) => (
               <div key={index} className="text-center">
@@ -202,7 +239,6 @@ export default function Home() {
             ))}
           </motion.div>
 
-          {/* CTA Section */}
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Ready to Transform Your Content?
@@ -221,7 +257,7 @@ export default function Home() {
         </div>
       </main>
 
-      {/* Footer */}
+
       <footer className="border-t border-white/10 py-12 mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
@@ -230,9 +266,14 @@ export default function Home() {
               <span className="text-xl font-bold">Video Generator AI</span>
             </div>
             <div className="flex space-x-6 text-purple-200">
-              <a href="#" className="hover:text-white transition-colors">Terms</a>
-              <a href="#" className="hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="hover:text-white transition-colors">Contact</a>
+            <a href="https://github.com/ARYPROGRAMMER/Video-Generator-AI" className="flex items-center space-x-2 hover:text-white transition-colors">
+              <GitHubLogoIcon className="h-5 w-5" />
+              <span>GitHub</span>
+              </a>
+
+              <a href="https://github.com/ARYPROGRAMMER/Video-Generator-AI/blob/master/LICENSE" className="hover:text-white transition-colors">License MIT</a>
+              <a href="#" className="hover:text-white transition-colors">Devpost</a>
+              <a href="https://www.linkedin.com/in/its-arya/" className="hover:text-white transition-colors">LinkedIn</a>
             </div>
           </div>
         </div>

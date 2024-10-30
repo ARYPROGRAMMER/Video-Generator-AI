@@ -19,9 +19,9 @@ const SignInPage = () => {
   ];
 
   const stats = [
-    { value: "10K+", label: "Active Users", delay: 0.2 },
-    { value: "100K+", label: "Videos Created", delay: 0.3 },
-    { value: "4.9/5", label: "User Rating", delay: 0.4 }
+    { value: "X K+", label: "Active Users", delay: 0.2 },
+    { value: "Y K+", label: "Videos Created", delay: 0.3 },
+    { value: "Z/5", label: "User Rating", delay: 0.4 }
   ];
 
   return (
@@ -173,9 +173,9 @@ const SignInPage = () => {
               </motion.div>
             </motion.div>
 
-            {/* Main Sign In Card */}
+
             <motion.div 
-              className="bg-white p-8 md:p-12 rounded-2xl shadow-xl relative overflow-hidden"
+              className="bg-gray-50 p-8 md:p-12 rounded-2xl shadow-xl relative overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -207,12 +207,12 @@ const SignInPage = () => {
               </div>
 
               <motion.div 
-                className="py-6"
+                className="py-10 px-12"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
               >
-                <SignIn />
+                <SignIn/>
               </motion.div>
 
               <motion.div 
@@ -221,18 +221,6 @@ const SignInPage = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.7 }}
               >
-                <p className="text-sm text-gray-600">
-                  New to Video Generator AI?{' '}
-                  <motion.a 
-                    href="/sign-up" 
-                    className="text-purple-600 hover:text-purple-700 font-medium inline-flex items-center"
-                    whileHover={{ x: 5 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    Sign up now 
-                    <ArrowRight className="ml-1 h-4 w-4" />
-                  </motion.a>
-                </p>
               </motion.div>
             </motion.div>
 

@@ -14,7 +14,7 @@ export const metadata = {
 const comfort = Comfortaa({subsets: ["latin-ext"],style:"normal",weight: "700"});
 export default function RootLayout({ children }) {
   return (
-   <ClerkProvider>
+   <ClerkProvider  dynamic> 
     <html lang="en">
       <body
         className={comfort.className}

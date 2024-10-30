@@ -2,9 +2,11 @@ import { UserDetailContext } from '@/app/_context/UserDetailContext';
 import { Button } from '@/components/ui/button'
 import { UserButton } from '@clerk/nextjs'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation';
 import React, { useContext } from 'react'
 
 function Header() {
+  const router = useRouter();
   const {userDetail,setUserDetail}=useContext(UserDetailContext);
   return (
     <div className='p-3 px-5 flex items-center justify-between shadow' >
@@ -20,7 +22,7 @@ function Header() {
             {userDetail?.credits}
           </h2>
         </div>
-        <Button>
+        <Button onClick={()=>router.replace('/dashboard')}>
             DashBoard
         </Button>
         <UserButton />
