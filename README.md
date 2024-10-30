@@ -33,6 +33,28 @@ A modern **Next.js 15** application that transforms text queries into high-quali
 
   [![Vercel Deployment](https://vercel.com/button)](https://video-generator-h9fmg5fxf-aryprogrammers-projects.vercel.app/)
 
+## Screenshots
+
+<details>
+  <summary>View Screenshots</summary>
+  
+  <div align="center">
+    <img src="screenshots/image%20(1).png" alt="Screenshot 1" width="400px"/>
+    <img src="screenshots/image%20(2).png" alt="Screenshot 2" width="400px"/>
+    <img src="screenshots/image%20(3).png" alt="Screenshot 3" width="400px"/>
+    <img src="screenshots/image%20(4).png" alt="Screenshot 4" width="400px"/>
+    <img src="screenshots/image%20(5).png" alt="Screenshot 5" width="400px"/>
+    <img src="screenshots/image%20(6).png" alt="Screenshot 6" width="400px"/>
+    <img src="screenshots/image%20(7).png" alt="Screenshot 7" width="400px"/>
+    <img src="screenshots/image%20(8).png" alt="Screenshot 8" width="400px"/>
+    <img src="screenshots/image%20(9).png" alt="Screenshot 9" width="400px"/>
+    <img src="screenshots/image%20(10).png" alt="Screenshot 10" width="400px"/>
+    <img src="screenshots/image%20(11).png" alt="Screenshot 11" width="400px"/>
+    <img src="screenshots/image%20(12).png" alt="Screenshot 12" width="400px"/>
+  </div>
+
+</details>
+
 
 ### ✨ Key Features
 
