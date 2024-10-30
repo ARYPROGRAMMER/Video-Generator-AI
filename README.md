@@ -46,11 +46,7 @@ A modern **Next.js 15** application that transforms text queries into high-quali
 - **Database** - Robust data handling with Drizzle ORM
 - **AI Integration** - GPT-4 and Gemini 15 Flash
 
-<div align="center">
-  <a href="https://www.producthunt.com/posts/Video-Generator-AI?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-ai&#0045;video&#0045;generator" target="_blank">
-    <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=undefined&theme=light" alt="AI&#0032;Video&#0032;Generator - Transform&#0032;text&#0032;into&#0032;engaging&#0032;videos&#0032;with&#0032;AI | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
-  </a>
-</div>
+[Link To DevPost Submission](www.google.com)
 
 ---
 
@@ -94,7 +90,7 @@ NEXT_PUBLIC_OPENAI_API_KEY=<your-openai-api-key>
 npm run dev
 ```
 
-The app will be running at [http://localhost:3000](http://localhost:3000).
+The app will be running at [localhost:3000](http://localhost:3000).
 
 ---
 
@@ -107,10 +103,7 @@ We welcome contributions! Please fork the repository, make your changes, and sub
 Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 
 <div align="center">
-  <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20awesome%20AI%20Video%20Generator!&url=https%3A%2F%2Fgithub.com%2FARYPROGRAMMER%2FVideo-Generator-AI">
-    <img src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2FARYPROGRAMMER%2FVideo-Generator-AI" alt="Tweet">
-  </a>
-  <a href="https://discord.gg/yourdiscord">
+  <a href="https://discord.gg/.aryasingh">
     <img src="https://img.shields.io/discord/YOUR_DISCORD_ID?style=flat-square&logo=discord" alt="Discord">
   </a>
 </div>
