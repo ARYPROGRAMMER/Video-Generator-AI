@@ -20,7 +20,7 @@
   [![Pull Requests](https://img.shields.io/github/issues-pr/ARYPROGRAMMER/Video-Generator-AI?style=flat-square)](https://github.com/ARYPROGRAMMER/Video-Generator-AI/pulls)
   [![Contributors](https://img.shields.io/github/contributors/ARYPROGRAMMER/Video-Generator-AI?style=flat-square)](https://github.com/ARYPROGRAMMER/Video-Generator-AI/graphs/contributors)
 
-  [Demo Videos Generated](https://vimeo.com/1024767660) · [Development Insights](https://vimeo.com/manage/videos/1024793348) · [Report Bug](https://github.com/ARYPROGRAMMER/Video-Generator-AI/issues) · [Request Feature](https://github.com/ARYPROGRAMMER/Video-Generator-AI/issues)
+  [Demo Videos Generated](https://vimeo.com/1024767660) · [Demo Run](https://vimeo.com/1024864982?share=copy#t=0) · [Development Insights](https://vimeo.com/manage/videos/1024793348) · [Report Bug](https://github.com/ARYPROGRAMMER/Video-Generator-AI/issues) · [Request Feature](https://github.com/ARYPROGRAMMER/Video-Generator-AI/issues)
 
 </div>
 
