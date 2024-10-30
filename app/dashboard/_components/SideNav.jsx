@@ -23,13 +23,13 @@ function SideNav() {
        {
         id:3,
         name:'Upgrade',
-        path:'/dashboard',
+        path:'/',
         icon:ShieldPlus
        } ,
        {
         id:4,
         name:'Account',
-        path:'/dashboard',
+        path:'/',
         icon:CircleUser
        } 
     ]

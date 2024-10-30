@@ -164,7 +164,6 @@ function CreateNew() {
       ...prev,
       "credits": userDetail?.credits-10
     }))
-    setVideoData(null);
   }
   
   return (
