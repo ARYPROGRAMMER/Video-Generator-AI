@@ -115,7 +115,7 @@ export default function Home() {
               </Button>
               <Button 
                 onClick={() => {
-                  window.open("https://www.youtube.com/watch?v=8-E1LbChJ88", "_blank");
+                  window.open("https://vimeo.com/1024793348?share=copy", "_blank");
                 }}
                 variant="outline"
                 className="border-purple-400 text-purple-400 hover:bg-purple-400/10 px-8 py-6 rounded-xl text-lg flex items-center space-x-2 w-full sm:w-auto transition-all transform hover:scale-105"

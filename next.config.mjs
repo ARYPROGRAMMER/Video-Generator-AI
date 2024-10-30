@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-      domains: ['images.unsplash.com', 'avatars.githubusercontent.com'], // Allow images from Unsplash
+      remotePatterns: [{hostname: 'images.unsplash.com'}, {hostname:'avatars.githubusercontent.com'},{hostname: 'vimeo.com'}], // Allow images from Unsplash
   }
 };
 
