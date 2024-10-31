@@ -32,6 +32,8 @@ A modern **Next.js 15** application that transforms text queries into high-quali
 
 
   [![Vercel Deployment](https://vercel.com/button)](https://video-generator-h9fmg5fxf-aryprogrammers-projects.vercel.app/)
+  
+  [Common Exceptions while Running](https://vimeo.com/1025093493?share=copy)
 
 ## Screenshots
 
