@@ -21,6 +21,8 @@
     "@radix-ui/react-select": "^2.1.2",
     "@radix-ui/react-slot": "^1.1.0",
     "@remotion/cli": "4.0.223",
+    "@splinetool/react-spline": "^4.0.0",
+    "@splinetool/runtime": "^1.9.35",
     "add": "^2.0.6",
     "assemblyai": "^4.7.1",
     "axios": "^1.7.7",
