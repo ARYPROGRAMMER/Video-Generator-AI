@@ -1,3 +1,5 @@
+
+
 <div align="center">
   <img src="https://socialify.git.ci/ARYPROGRAMMER/Video-Generator-AI/image?description=1&descriptionEditable=This%20Next.js%20application%20generates%20videos%20based%20on%20client-provided%20Queries&font=Bitter&forks=1&issues=1&language=1&name=1&owner=1&pattern=Solid&pulls=1&stargazers=1&theme=Dark" alt="Video-Generator-AI" />
 
@@ -106,7 +108,15 @@ NEXT_PUBLIC_OPENAI_API_KEY=<your-openai-api-key>
 
 > ⚠️ **Warning**: The app may not function correctly if the my API keys are expired or invalid. Please ensure your own valid API keys are added to avoid disruptions.
 
-### 4. Run the App
+### 4. Push Database Schema
+
+Sync your database tables with the Drizzle ORM schema by running:
+
+```bash
+npm run db:push
+```
+
+### 5. Run the App
 
 ```bash
 npm run dev
@@ -123,4 +133,3 @@ We welcome contributions! Please fork the repository, make your changes, and sub
 ## License
 
 Distributed under the GNU GPL License. See [LICENSE](LICENSE) for more information.
-
